@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="create sequence for product" author="a.akopyan">
+        <createSequence incrementBy="1" schemaName="jpa_filters" sequenceName="product_id_sequence"/>
+    </changeSet>
+
+    <changeSet id="create table product" author="a.akopyan">
+        <createTable tableName="product" schemaName="jpa_filters">
+            <column name="id" type="numeric(19)">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)"/>
+            <column name="description" type="varchar(4096)"/>
+            <column name="price" type="numeric(19,2)"/>
+            <column name="CREATED_DATE" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="MODIFIED_DATE" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
